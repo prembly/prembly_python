@@ -115,6 +115,38 @@ class DataVerification(PremblyBase):
         url = self.create_request_url(suburl='/bvn_w_face') 
         return self._handle_request('POST', url , data=data)
 
+
+
+    def bvn_igree(
+            self, 
+            number= None , 
+            mode= None ,
+            channel= None ,
+            otp= None ,
+            verification_method= None ,
+            ):
+        """
+        Verify a Bank Verification Number (BVN) using Igree
+       
+        Params:
+            number : Bank Verification Number
+            mode : eg : INITIATE,SET_CHANNEL,FINALIZE
+            channel : string of the contact to recieve OTP
+            otp : the OTP sent to customer
+            verification_method : eg : "email", "phone", "all"
+        Returns : 
+            Json data from Prembly API.
+        """
+        data = { 
+            'number': number,  
+            'mode': mode,  
+            'channel': channel,  
+            'otp': otp,  
+            'verification_method': verification_method,  
+            }
+        url = self.create_request_url(suburl='/bvn/igree') 
+        return self._handle_request('POST', url , data=data)
+
     
     def phone_number(self, number  , v_type='normal'):
         """
