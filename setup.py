@@ -13,11 +13,10 @@ with open(os.path.join(here, 'LONG_DESCRIPTION.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 
-
 setup(
     name = 'pyprembly',
     version='0.0.3',
-    packages = find_packages(exclude=["tests", "tests.*"]), 
+    packages = find_packages(exclude=["tests", "tests.*", "*.env"]), 
     description="Python bindings for the Prembly IdentityPass API",
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -26,9 +25,13 @@ setup(
     author="Olanrewaju Kabiru",
     author_email="programmerolakay@gmail.com",
     url="https://github.com/olakayCoder1/pyprembly",
-    python_requires='>=3.x',
+    python_requires='>=3.5',
     install_requires=[
-        "requests","python-dotenv", "urllib3",
+        "requests",
+        "python-dotenv",
+        "urllib3",
+        "pillow",
+        "cryptography"
     ],
     license='MIT',
     package_data={'README': ['README.md']},
@@ -41,6 +44,6 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Environment :: Web Environment",
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',   
+        'License :: OSI Approved :: MIT License',
     ]
 )

@@ -30,11 +30,11 @@ class TestNigeria(TestCase):
         self.assertEqual(response['detail'], "Verification Successfull")
 
 
-    # def test_cac_with_name(self):
-    #     response = self.Verification.cac_with_name(
-    #         company_name='TEST COMPANY'
-    #     )
-    #     self.assertEqual(response['detail'], "Verification Successful")
+    def test_cac_with_name(self):
+        response = self.Verification.cac_with_name(
+            company_name='TEST COMPANY'
+        )
+        self.assertEqual(response['detail'], "Verification Successful")
 
 
     def test_phone_number(self):
@@ -161,12 +161,12 @@ class TestNigeria(TestCase):
         )
         self.assertEqual(response['detail'], "Verification Successfull")
 
-    # def test_bvn(self):
-    #     response = self.Verification.bvn_with_face(
-    #         number= 54651333604,
-    #         image='https://www.biography.com/.image/c_fill%2Ccs_srgb%2Cfl_progressive%2Ch_400%2Cq_auto:good%2Cw_620/MTY2MzU3Nzk2OTM2MjMwNTkx/elon_musk_royal_society.jpg',
-    #     )
-    #     self.assertEqual(response['detail'], "Verification Successful")
+    def test_bvn(self):
+        response = self.Verification.bvn_with_face(
+            number= 54651333604,
+            image='https://www.biography.com/.image/c_fill%2Ccs_srgb%2Cfl_progressive%2Ch_400%2Cq_auto:good%2Cw_620/MTY2MzU3Nzk2OTM2MjMwNTkx/elon_musk_royal_society.jpg',
+        )
+        self.assertEqual(response['detail'], "Verification Successful")
 
     
     def test_bvn_number(self):

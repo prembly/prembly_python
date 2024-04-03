@@ -28,7 +28,7 @@ class PremblyBase(object):
         ):
         self._BASE_END_POINT = PremblyConfiguration.BASE_END_POINT_DICTIONARY.get( environment )
         self._API_VERSION = api_version
-        self._API_URL_BASE = self._BASE_END_POINT + '/api/' + self._API_VERSION + '/biometrics/merchant/data/verification'
+        self._API_URL_BASE = self._BASE_END_POINT + '/verification'
 
 
         # if the app id is provided in the initialization , set the _PREMBLY_APP_ID to the provided value
@@ -122,13 +122,16 @@ class PremblyBase(object):
 
         try:
             response = request(url, headers=self._headers(), data=payload)
+            if response.status_code not in range(200, 210):
+                raise Exception(f"Got response with status {response.status_code}")
         except Exception as e:
             # Would catch just requests.exceptions.RequestException, but can
             # also raise ValueError, RuntimeError, etc.
             self._handle_request_error(e)
         
-        return json.loads(response.text) 
-        
+        # print(response, dir(response))
+        return response.json()
+
 
 
     def _handle_request_error(self, e):
@@ -142,6 +145,8 @@ class PremblyBase(object):
                    "issue locally.  If this problem persists, let me "
                    "know at programmer here's probably a configuration "
                    )
+        else:
+            msg = str(e)
         raise APIConnectionError(msg)
         
 

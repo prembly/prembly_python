@@ -19,9 +19,9 @@ class PremblyConfiguration:
 
 
     BASE_END_POINT_DICTIONARY =  {
-            'live': 'https://api.myidentitypass.com',
-            'test': 'https://sandbox.myidentitypass.com',
-            'sandbox' : "https://sandbox.myidentitypass.com",
+            'live': 'https://api.prembly.com/identitypass',
+            'test': 'https://api.prembly.com/identitypass',
+            'sandbox' : "https://api.prembly.com/identitypass",
         }
 
 

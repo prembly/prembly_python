@@ -736,7 +736,7 @@ class DataVerification(PremblyBase):
         if image:
             image =is_base64_image(image)
         data = {'number': number , 'image': image}
-        url = self.create_request_url(suburl='/nin') 
+        url = self.create_request_url(suburl='/nin_w_face')
         return self._handle_request('POST', url , data=data)
 
 
